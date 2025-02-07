@@ -8,7 +8,7 @@ const Pesquisa = ({ pesquisa, setPesquisa }) => {
         type="text"
         value={pesquisa}
         onChange={(e) => setPesquisa(e.target.value)}
-        placeholder="Digite o nome da tarefa que deseja pesquisar..." />
+        placeholder="Nome da tarefa para pesquisa" />
     </div>
   );
 };
