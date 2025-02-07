@@ -1,8 +1,18 @@
-# React + Vite
+# Projeto de Listagem de Tarefas para a empresa Propig
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de frontend realizado para o processo seletivo da empresa Propig, desenvolvido em React com Vite tendo como objetivo fazer uma lista de tarefas à fazer, com as funcionalidades de criação, exclusão, finalização e pesquisa.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Instalação
+
+Como pré-requisito, você precisa ter o Node versão 20.
+
+No diretório do projeto, execute:
+
+### `npm install`
+
+Após a instalação, execute o comando:
+
+### `npm run dev`
+
+O aplicativo estará disponível no endereço: http://localhost:5173
