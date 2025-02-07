@@ -1,27 +1,29 @@
 import { useState } from 'react';
 import Tarefa from "./components/Tarefa";
 import CriarTarefa from "./components/CriarTarefa";
+import Pesquisa from './components/Pesquisa';
 
 import "./App.css";
+
 
 function App() {
   const [tarefas, setTarefas] = useState([
     {
       id: 1,
-      titulo: "Criar funcionalidade x no sistema",
-      descricao: "Trabalho",
+      titulo: "Tomar banho",
+      descricao: "Entrar no chuveiro às 5h00.",
       estaFinalizada: false,
     },
     {
       id: 2,
-      titulo: "Ir pra academia",
-      descricao: "Pessoal",
+      titulo: "Lanchar",
+      descricao: "Comer 2 bananas, um iogurte, granola e leite às 15h00.",
       estaFinalizada: false,
     },
     {
       id: 3,
-      titulo: "Estudar React",
-      descricao: "Estudos",
+      titulo: "Estudar",
+      descricao: "Estudar React e Vue às 13h30.",
       estaFinalizada: false,
     }
   ]);
@@ -54,12 +56,19 @@ function App() {
     setTarefas(newTarefas);
   };
 
+    // Função para pesquisa 
+    const [pesquisa, setPesquisa] = useState("");
+
   return (
     <div className="App">
       <CriarTarefa adicionarTarefa={adicionarTarefa}/>
+      <Pesquisa pesquisa={pesquisa} setPesquisa={setPesquisa}/>
       <h1>Listagem de Tarefas Propig App</h1>
       <div className="lista-tarefa">
-        {tarefas.map((tarefa) => (
+        {tarefas
+        // Aqui ele vai filtrar se há alguma tarefa que tenha os caracteres que incluímos na pesquisa
+        .filter((tarefa) => tarefa.titulo.toLowerCase().includes(pesquisa.toLowerCase()))
+        .map((tarefa) => (
           <Tarefa key={tarefa.id} tarefa={tarefa} excluirTarefa={excluirTarefa} finalizarTarefa={finalizarTarefa} />
         ))}
       </div>
