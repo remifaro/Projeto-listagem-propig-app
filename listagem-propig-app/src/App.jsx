@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Tarefa from "./components/Tarefa";
 import CriarTarefa from "./components/CriarTarefa";
 import Pesquisa from './components/Pesquisa';
@@ -7,7 +7,7 @@ import styles from "./App.module.css";
 
 
 function App() {
-  const [tarefas, setTarefas] = useState([
+  const tarefasIniciais = [
     {
       id: 1,
       titulo: "Tomar banho",
@@ -26,7 +26,18 @@ function App() {
       descricao: "Estudar React e Vue às 13h30.",
       estaFinalizada: false,
     }
-  ]);
+  ];
+
+  // Carregando do localStorage ou das tarefas iniciais
+  const [tarefas, setTarefas] = useState(() => {
+    const tarefasSalvas = localStorage.getItem("tarefas");
+    return tarefasSalvas ? JSON.parse(tarefasSalvas) : tarefasIniciais;
+  });
+
+  // Atualizando o localStorage sempre que a lista de tarefas atualizar
+  useEffect(() => {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  }, [tarefas]);
 
   // Função para atualização na minha lista de tarefas
   const adicionarTarefa = (titulo, descricao) => {
@@ -44,15 +55,15 @@ function App() {
 
   // Função para exclusão na minha lista de tarefas
   const excluirTarefa = (id) => {
-    const newTarefas = [...tarefas];
-    const tarefasFiltradas = newTarefas.filter((tarefa) => tarefa.id !== id ? tarefa : null);
+    const tarefasFiltradas = tarefas.filter((tarefa) => tarefa.id !== id);
     setTarefas(tarefasFiltradas);
   };
 
   // Função para "finalizar" na minha lista de tarefas
   const finalizarTarefa = (id) => {
-    const newTarefas = [...tarefas];
-    newTarefas.map((tarefa) => tarefa.id === id ? tarefa.estaFinalizada = !tarefa.estaFinalizada : tarefa);
+    const newTarefas = tarefas.map((tarefa) =>
+      tarefa.id === id ? { ...tarefa, estaFinalizada: !tarefa.estaFinalizada } : tarefa
+    );
     setTarefas(newTarefas);
   };
 
@@ -76,4 +87,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
