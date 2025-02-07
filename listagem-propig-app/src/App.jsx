@@ -3,7 +3,7 @@ import Tarefa from "./components/Tarefa";
 import CriarTarefa from "./components/CriarTarefa";
 import Pesquisa from './components/Pesquisa';
 
-import "./App.css";
+import styles from "./App.module.css";
 
 
 function App() {
@@ -60,11 +60,11 @@ function App() {
     const [pesquisa, setPesquisa] = useState("");
 
   return (
-    <div className="App">
+    <div className={styles.App}>
       <CriarTarefa adicionarTarefa={adicionarTarefa}/>
       <Pesquisa pesquisa={pesquisa} setPesquisa={setPesquisa}/>
       <h1>Listagem de Tarefas Propig App</h1>
-      <div className="lista-tarefa">
+      <div className={styles.lista_tarefa}>
         {tarefas
         // Aqui ele vai filtrar se há alguma tarefa que tenha os caracteres que incluímos na pesquisa
         .filter((tarefa) => tarefa.titulo.toLowerCase().includes(pesquisa.toLowerCase()))

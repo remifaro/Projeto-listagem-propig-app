@@ -20,7 +20,7 @@ const CriarTarefa = ({adicionarTarefa}) => {
     };
 
   return (
-    <div className="criar-tarefa">
+    <div>
         <h2>Crie uma nova tarefa:</h2>
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Digite o título da tarefa" value={titulo} onChange={(e) => setTitulo(e.target.value)}/>
