@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import styles from "../App.module.css";
 
 const CriarTarefa = ({adicionarTarefa}) => {
 
@@ -25,7 +26,7 @@ const CriarTarefa = ({adicionarTarefa}) => {
         <form onSubmit={handleSubmit}>
             <input type="text" placeholder="Digite o título da tarefa" value={titulo} onChange={(e) => setTitulo(e.target.value)}/>
             <input type="text" placeholder="Digite a descrição da tarefa" value={descricao} onChange={(e) => setDescricao(e.target.value)}/>
-            <button>Criar</button>
+            <button className={styles.criar}>Criar</button>
         </form>
     </div>
   )
