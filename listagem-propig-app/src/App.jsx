@@ -26,14 +26,28 @@ function App() {
     }
   ]);
 
+  // Função para atualização da minha lista de tarefas
+  const adicionarTarefa = (titulo, descricao) => {
+    const newTarefas = [...tarefas,
+    {
+      id: Math.floor(Math.random() * 10000),
+      titulo,
+      descricao,
+      estaFinalizada: false,
+    },
+    ];
+
+    setTarefas(newTarefas);
+  };
+
   return (
     <div className="App">
-      <CriarTarefa />
+      <CriarTarefa adicionarTarefa={adicionarTarefa}/>
       <h1>Listagem de Tarefas Propig App</h1>
       <div className="lista-tarefa">
         {tarefas.map((tarefa) => (
-            <Tarefa tarefa={tarefa} />
-          ))}
+          <Tarefa key={tarefa.id} tarefa={tarefa} />
+        ))}
       </div>
     </div>
   )
