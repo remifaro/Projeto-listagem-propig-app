@@ -1,0 +1,30 @@
+.tarefa {
+    background-color: rgb(0, 40, 104, .8);
+    color: #fff;
+    box-shadow: 0 0 10px rgb(0, 0, 0, .1);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+.finalizar {
+    color: #000000;
+}
+  
+.excluir {
+    background-color: #b74343;
+}
+
+@media (max-width: 500px) {
+    
+    .tarefa {
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: right;
+    }
+  
+  }
